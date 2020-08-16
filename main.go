@@ -20,12 +20,5 @@ func main() {
 	r.GET("/talk", talk.Talk)
 	r.GET("/random", talk.Random)
 	//金老师的经典发言
-	//r.GET("/random", talk.RandClassic)
-
-	//r.GET("/ping", func(c *gin.Context) {
-	//	c.JSON(200, gin.H{
-	//		"message": "pong",
-	//	})
-	//})
 	r.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }
