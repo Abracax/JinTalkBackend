@@ -1,8 +1,8 @@
 package talk
 
 import (
+	"../utils"
 	"github.com/gin-gonic/gin"
-	"playground/jin/utils"
 )
 
 func Talk(c *gin.Context) {

@@ -1,8 +1,8 @@
 package talk
 
 import (
+	"../utils"
 	"github.com/gin-gonic/gin"
-	"playground/jin/utils"
 )
 
 func Random(c *gin.Context) {

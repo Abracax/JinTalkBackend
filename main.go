@@ -1,11 +1,11 @@
 package main
 
 import (
+	"./talk"
+	"./utils"
 	"github.com/gin-gonic/gin"
 	"log"
 	"math/rand"
-	"playground/jin/talk"
-	"playground/jin/utils"
 	"time"
 )
 
