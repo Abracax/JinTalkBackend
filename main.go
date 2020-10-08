@@ -20,5 +20,5 @@ func main() {
 	r.GET("/talk", talk.Talk)
 	r.GET("/random", talk.Random)
 	//金老师的经典发言
-	r.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
+	r.Run(":2333") // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }

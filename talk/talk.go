@@ -2,6 +2,7 @@ package talk
 
 import (
 	"github.com/gin-gonic/gin"
+	"playground/jin/utils"
 )
 
 func Talk(c *gin.Context) {
@@ -11,7 +12,7 @@ func Talk(c *gin.Context) {
 		return
 	}
 
-	msg, ok := ParseName(name)
+	msg, ok := parseName(name)
 	if ok {
 		c.JSON(200, gin.H{
 			"status":  "success",
@@ -23,9 +24,9 @@ func Talk(c *gin.Context) {
 
 	msg += "，"
 
-	greeting := GetRandFromConfEntry("greetings")
-	mid := GetRandFromConfEntry("middle")
-	politics := GetRandFromConfEntry("politics")
+	greeting := utils.GetRandFromConfEntry("greetings")
+	mid := utils.GetRandFromConfEntry("middle")
+	politics := utils.GetRandFromConfEntry("politics")
 
 	msg += greeting + mid + politics
 
@@ -36,16 +37,24 @@ func Talk(c *gin.Context) {
 	})
 }
 
-func Random(c *gin.Context) {
-	msg := ""
-	exclamation := GetRandFromConfEntry("exclamation")
-	mid := GetRandFromConfEntry("middle")
-	politics := GetRandFromConfEntry("politics")
-	end := GetRandFromConfEntry("other")
+func parseName(s string) (string, bool) {
+	switch s {
+	case "ci":
+		return name(s), true
+	case "keke":
+		return name(s), true
+	case "cax":
+		return name(s), true
+	default:
+		return s, false
+	}
+}
 
-	msg += exclamation  + mid + politics + end
-	c.JSON(200, gin.H{
-		"status":  "success",
-		"message": msg,
-	})
+func name(name string) string {
+	arr := utils.ParsedConf[name]
+	msg := ""
+	for _, sen := range arr {
+		msg += sen + "！"
+	}
+	return msg
 }
