@@ -1,8 +1,8 @@
 package main
 
 import (
-	"./talk"
-	"./utils"
+	"github.com/Abracax/JinTalkBackend/talk"
+	"github.com/Abracax/JinTalkBackend/utils"
 	"github.com/gin-gonic/gin"
 	"log"
 	"math/rand"

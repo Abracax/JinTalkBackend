@@ -1,7 +1,7 @@
 package talk
 
 import (
-	"../utils"
+	"github.com/Abracax/JinTalkBackend/utils"
 	"github.com/gin-gonic/gin"
 )
 
