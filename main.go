@@ -15,10 +15,14 @@ func main() {
 		return
 	}
 	rand.Seed(time.Now().UTC().UnixNano())
-	r := gin.Default()
-	r.GET("/talk/:name", talk.Talk)
-	r.GET("/talk", talk.Talk)
-	r.GET("/random", talk.Random)
-	//金老师的经典发言
-	r.Run(":2333") // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
+	router := gin.Default()
+	router.GET("/talk/:name", talk.Talk)
+	router.GET("/talk", talk.Talk)
+	router.GET("/random", talk.Random)
+	router.POST("/auth", talk.AuthZJUI)
+	err := router.Run(":2333")
+	if err != nil {
+		log.Printf("run router err=%v", err)
+		return
+	}
 }
