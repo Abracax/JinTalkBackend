@@ -1,2 +1,8 @@
-say 您好啊 with freq 300
-follows freq 500 say 次🐷 with freq 200
+with freq 100 say seq 2 我今天想关心一下你 你是不是在走下坡路啊!
+with freq 300 say seq 2 次🐷，他🐎的 一肚子坏水
+with freq 300 say 陈ax，是个反骨仔吗？
+with freq 300 say 今天这件事情是丑恶!
+with freq 300 say 我今天也有些深夜崩溃的感觉了...
+with freq 300 say 其实我现在觉得我每天有点那种...
+with freq 300 say 有种理想渐渐被磨灭的感觉...
+with freq 300 say seq 5 珂珂，你坠美了 珂珂真的美啊 像一朵玫瑰花🌹 就怕391/374像大太阳🌞 🌹枯萎了🥀

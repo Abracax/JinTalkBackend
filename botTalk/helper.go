@@ -11,6 +11,9 @@ func entryToResponse(x Entry) Response {
 	if x.meme != "" {
 		res.memePath = x.meme
 		res.msgType = MEME
+	} else if len(x.seq) > 0 {
+		res.msgType = SEQ
+		res.seq = x.seq
 	} else {
 		res.text = x.words
 		res.msgType = TEXT
@@ -18,14 +21,16 @@ func entryToResponse(x Entry) Response {
 	return res
 }
 
-func responseToMessage(update tgbotapi.Update,response Response) tgbotapi.Chattable {
+func responseToMessage(update tgbotapi.Update,response Response) (tgbotapi.Chattable, bool) {
 	switch response.msgType {
 	case TEXT:
-		return tgbotapi.NewMessage(update.Message.Chat.ID, response.text)
+		return tgbotapi.NewMessage(update.Message.Chat.ID, response.text), true
 	case MEME:
-		return tgbotapi.NewAnimationUpload(update.Message.Chat.ID, response.memePath)
+		return tgbotapi.NewAnimationUpload(update.Message.Chat.ID, response.memePath), true
+	case SEQ:
+		return nil, false
 	default:
-		return tgbotapi.NewMessage(update.Message.Chat.ID, response.text)
+		return nil, true
 	}
 }
 

@@ -18,6 +18,16 @@ func buildLine(x *JinTalkBotServer, line string) {
 			if next == "meme" {
 				ent.meme = tokens[i+2]
 				i = i + 3
+			} else if next == "seq" {
+				seqLen, err := strconv.Atoi(tokens[i+2])
+				if err != nil {
+					panic("bad configurations")
+				}
+				ent.seq = make([]string, seqLen)
+				for ii:=0;ii < seqLen;ii++ {
+					ent.seq[ii] = tokens[i+3+ii]
+				}
+				i = i + 3 + seqLen
 			} else {
 				ent.words = next
 				i = i + 2

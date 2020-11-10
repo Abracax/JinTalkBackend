@@ -6,16 +6,16 @@ import (
 )
 
 const (
-	DICT string = "conf/jintalk.dict"
+	DICT  string = "conf/jintalk.dict"
 	TOKEN string = ""
 )
 
 type JinTalkBotServer struct {
 	dictFile string
-	token string
+	token    string
 
 	updates tgbotapi.UpdatesChannel
-	bot *tgbotapi.BotAPI
+	bot     *tgbotapi.BotAPI
 
 	totalFreq int
 	entries   []Entry
@@ -25,6 +25,7 @@ type JinTalkBotServer struct {
 
 type Entry struct {
 	words      string
+	seq        []string
 	freq       int
 	followFreq int
 	meme       string
@@ -36,10 +37,11 @@ type Response struct {
 	msgType  MsgType
 	text     string
 	memePath string
+	seq		[]string
 }
 
 const (
 	TEXT MsgType = iota
 	MEME
+	SEQ
 )
-

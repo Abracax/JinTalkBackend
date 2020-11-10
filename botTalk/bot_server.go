@@ -54,11 +54,20 @@ func (x *JinTalkBotServer) Start() {
 		}
 
 		response := botSay(x)
-		msg := responseToMessage(update, response)
-
-		_, err := x.bot.Send(msg)
-		if err != nil {
-			fmt.Printf("err = %v", err)
+		msg, ok := responseToMessage(update, response)
+		if !ok {
+			for _, m := range response.seq {
+				msg = tgbotapi.NewMessage(update.Message.Chat.ID, m)
+				_, err := x.bot.Send(msg)
+				if err != nil {
+					fmt.Printf("err = %v", err)
+				}
+			}
+		} else {
+			_, err := x.bot.Send(msg)
+			if err != nil {
+				fmt.Printf("err = %v", err)
+			}
 		}
 	}
 }
