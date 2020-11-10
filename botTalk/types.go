@@ -7,13 +7,15 @@ import (
 
 type JinTalkBotServer struct {
 	dictFile string
+	token string
+
+	updates tgbotapi.UpdatesChannel
+	bot *tgbotapi.BotAPI
+
 	totalFreq int
 	entries   []Entry
 	randomSrc rand.Source
 	lastIndex int
-	token string
-	updates tgbotapi.UpdatesChannel
-	bot *tgbotapi.BotAPI
 }
 
 type Entry struct {

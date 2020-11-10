@@ -1,8 +1,12 @@
 package botTalk
 
-import tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
+import (
+	"fmt"
+	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
+	"os"
+)
 
-func EntryToResponse(x Entry) Response {
+func entryToResponse(x Entry) Response {
 	res := Response{}
 	if x.meme != "" {
 		res.memePath = x.meme
@@ -23,6 +27,15 @@ func responseToMessage(update tgbotapi.Update,response Response) tgbotapi.Chatta
 	default:
 		return tgbotapi.NewMessage(update.Message.Chat.ID, response.text)
 	}
-
 }
 
+func commandLineInit() (string, string) {
+	argv := os.Args
+	argc := len(argv)
+	if argc != 3 {
+		panic("args mismatch")
+	}
+	fmt.Printf("using dict file: [%s]\n", argv[1])
+
+	return argv[1], argv[2]
+}
