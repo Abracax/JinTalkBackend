@@ -1,4 +1,4 @@
-package talk
+package httpTalk
 
 import (
 	"github.com/Abracax/JinTalkBackend/utils"
