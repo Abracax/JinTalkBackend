@@ -4,6 +4,7 @@ import (
 	"github.com/Abracax/JinTalkBackend/botTalk"
 	"github.com/Abracax/JinTalkBackend/httpTalk"
 )
+
 type JinTalkServer interface {
 	Init()
 	Configure()
@@ -13,8 +14,8 @@ type JinTalkServer interface {
 func main() {
 	var httpServer httpTalk.JinTalkHttpServer
 	var botServer botTalk.JinTalkBotServer
-	StartServer(&httpServer)
 	StartServer(&botServer)
+	StartServer(&httpServer)
 }
 
 func StartServer(s JinTalkServer) {

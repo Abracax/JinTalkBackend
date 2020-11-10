@@ -13,7 +13,8 @@ type JinTalkHttpServer struct {
 }
 
 func (s *JinTalkHttpServer) Init() {
-	s.router = gin.Default()
+	gin.SetMode(gin.ReleaseMode)
+	s.router = gin.New()
 	if err := utils.ParseConf(); err != nil {
 		log.Printf("init conf err=%v", err)
 		return

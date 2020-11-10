@@ -5,6 +5,11 @@ import (
 	"math/rand"
 )
 
+const (
+	DICT string = "conf/jintalk.dict"
+	TOKEN string = ""
+)
+
 type JinTalkBotServer struct {
 	dictFile string
 	token string
